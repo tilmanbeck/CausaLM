@@ -23,7 +23,7 @@ dependencies:
   - pip:
     - absl-py==0.8.1
     - altair==3.2.0
-    - apex==0.1
+    - apex
     - argh==0.26.2
     - astor==0.8.0
     - attrs==19.3.0
@@ -41,14 +41,14 @@ dependencies:
     - chardet==3.0.4
     - click==7.0
     - colorama==0.4.1
-    - cupy==7.0.0rc1
+    - cupy-cuda112
     - cycler==0.10.0
     - cymem==2.0.3
     - cython==0.29.14
     - decorator==4.4.1
     - defusedxml==0.6.0
     - docutils==0.15.2
-    - en-core-web-lg==2.2.5
+    #- en-core-web-lg==2.2.5
     - entrypoints==0.3
     - enum-compat==0.0.3
     - fastrlock==0.4
