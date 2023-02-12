@@ -150,3 +150,4 @@ def print_final_metrics(name: str, metrics: Dict, logger=None):
         for metric, val in metrics.items():
             print(f"{metric}: {val:.4f}")
         print()
+

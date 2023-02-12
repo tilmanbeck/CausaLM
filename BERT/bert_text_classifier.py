@@ -3,7 +3,7 @@ from tqdm import tqdm
 from transformers import BertModel
 from torch.utils.data.dataloader import DataLoader
 from datasets.utils import CLS_TOKEN, SEP_TOKEN
-from constants import NUM_CPU, MAX_SENTIMENT_SEQ_LENGTH
+from constants import NUM_CPU, MAX_SENTIMENT_SEQ_LENGTH, ARGUMENT_ID2INT
 from BERT.bert_text_dataset import BERT_PRETRAINED_MODEL, BertTextDataset, InputExample, InputLabel, InputFeatures, \
     truncate_seq_first
 from pytorch_lightning import LightningModule, data_loader
@@ -11,7 +11,14 @@ from utils import save_predictions
 import torch.nn.functional as F
 import torch.nn as nn
 import torch
+import json
 
+with open(ARGUMENT_ID2INT, 'r') as fp:
+    id2int = json.load(fp)
+ARGUMENT_MAPPING_BIN = {
+    'Argument': 1,
+    'NoArgument':0
+}
 
 class Linear_Layer(nn.Module):
     def __init__(self, input_size: int, output_size: int, dropout: float = None,
@@ -297,7 +304,12 @@ class BertTextClassificationDataset(BertTextDataset):
         super().__init__(data_path, treatment, subset, text_column, label_column, bert_pretrained_model, max_seq_length)
 
     def read_examples_func(self, row):
-        return InputExample(unique_id=int(row.iloc[0]), text=str(row[self.text_column]), label=int(row[self.label_column]))
+        if "sentence" == self.text_column: # inefficient hack but for now should do
+            return InputExample(unique_id=int(id2int[row.iloc[0]]), text=str(row[self.text_column]),
+                                label=int(row[self.label_column]))
+        else:
+            return InputExample(unique_id=int(row.iloc[0]), text=str(row[self.text_column]),
+                                label=int(row[self.label_column]))
 
     def convert_examples_to_features(self, examples):
         """Loads a data file into a list of `InputFeature`s."""

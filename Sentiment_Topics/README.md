@@ -19,3 +19,11 @@ This will save the intervened BERT language model which treats and controls for 
 
 This will train and test all the Sentiment classifiers for the full experimental pipeline for Topics (treatment + control).
 
+
+### Explanations
+
+- What does - `./lm_finetune/pregenerate_training_data.py` do?
+
+For the specified domain, retrieve the identifier for the treated and the control concept (which is oddly the last one 
+in the list of control concepts in the JSON file) from the accompanying JSON file.
+Then read data from train/dev files

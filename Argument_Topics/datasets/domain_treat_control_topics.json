@@ -1,0 +1,50 @@
+{
+    "marijuana_legalization": {
+        "treated_topic": 2,
+        "control_topics": [
+            6
+        ]
+    },
+    "gun_control": {
+        "treated_topic": 3,
+        "control_topics": [
+            20
+        ]
+    },
+    "abortion": {
+        "treated_topic": 11,
+        "control_topics": [
+            12
+        ]
+    },
+    "cloning": {
+        "treated_topic": 15,
+        "control_topics": [
+            9
+        ]
+    },
+    "school_uniforms": {
+        "treated_topic": 8,
+        "control_topics": [
+            5
+        ]
+    },
+    "minimum_wage": {
+        "treated_topic": 16,
+        "control_topics": [
+            14
+        ]
+    },
+    "nuclear_energy": {
+        "treated_topic": 4,
+        "control_topics": [
+            1
+        ]
+    },
+    "death_penalty": {
+        "treated_topic": 19,
+        "control_topics": [
+            6
+        ]
+    }
+}
